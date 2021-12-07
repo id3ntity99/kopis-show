@@ -1,7 +1,7 @@
 //React
 import { useState } from "react";
 import React from "react";
-
+import {subDays, addDays} from "date-fns";
 //API
 import { postAPI } from "./api/callAPI";
 
@@ -86,7 +86,11 @@ function TestShowResult() {
             dateFormat="yyyy-MM-dd(eee)"
           />
           <DatePicker
-            selected={endDate}
+			  excludeDateIntervals={[{
+				  start: subDays(startDate, 365),
+					end: subDays(startDate, 1) 
+			  }]}
+			selected={endDate}
             onChange={(date) => setEndDate(date)}
             dateFormat="yyyy-MM-dd(eee)"
           />
