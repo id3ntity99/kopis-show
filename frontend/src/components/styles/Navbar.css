@@ -1,0 +1,19 @@
+.nav-bar {
+	width: 1920px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.nav-list {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	list-style: none;
+	width: 500px;
+	font-size: 30px;
+}
+
+
+
+

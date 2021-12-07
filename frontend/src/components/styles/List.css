@@ -1,0 +1,21 @@
+.show-list {
+  list-style: none;
+}
+
+.show-list__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 1500px;
+  max-width: 1920px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.poster {
+  width: 300px;
+  height: auto;
+  max-width: 300px;
+  max-height: 400px;
+  object-fit: cover;
+}
