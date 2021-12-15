@@ -1,5 +1,5 @@
 import React from "react" 
-import "./styles/Navbar.css" 
+import "../styles/Navbar.css" 
 
 function Navbar() {
 	return (
@@ -9,7 +9,7 @@ function Navbar() {
 			<ul class="nav-list">
 				<li>Home</li>
 				<li>Shows</li>
-				<li>About</li>
+				<li>Stat</li>
 			</ul>
 		
 		</nav>

@@ -1,16 +1,17 @@
 const axios = require("axios");
 
 // Create axios instance.
-const API = axios.create({
-  BASE_URL: "",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+//const API = axios.create({
+ // BASE_URL: "",
+ // headers: {
+   // "Content-Type": "application/json",
+ // },
+//});
 
-async function postAPI(stdate, edDate, cpage, rows) {
+
+async function api_get_request(stdate, edDate, cpage, rows) {
   try {
-    const res = await API.post("http://localhost:5000/api", null, {
+    const res = await axios.get("http://localhost:5000/api", {
       params: {
         stdate: stdate,
         eddate: edDate,
@@ -21,9 +22,8 @@ async function postAPI(stdate, edDate, cpage, rows) {
     const data = res.data;
     return data;
   } catch (err) {
-    const error = err;
-    return error;
+		console.log(err)
   }
 }
 
-module.exports = { postAPI };
+module.exports = { api_get_request };

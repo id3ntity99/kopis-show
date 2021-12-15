@@ -1,4 +1,3 @@
-//const request = require("request");
 const axios = require("axios");
 const convert = require("xml-js");
 require("dotenv").config();
@@ -14,17 +13,16 @@ async function getAPI(req, res) {
   const rows = req.query.rows;
   console.log(stdate, eddate, cpage, rows);
   const url = `${API_BASE_URL}?${API_KEY_NAME}=${API_KEY_VALUE}&stdate=${stdate}&eddate=${eddate}&cpage=${cpage}&rows=${rows}`;
-  let result;
-  await axios
-    .get(url)
-    .then((res) => {
-      result = convert.xml2js(res.data, { compact: true, spaces: 4 });
-    })
-    .catch((err) => {
-      console.log(`Request FAIL // REQUEST_URL = ${url} Errors:\n`, err);
+  try {
+    const apiResponse = await axios.get(url);
+    const result = convert.xml2js(apiResponse.data, {
+      compact: true,
+      spaces: 4,
     });
-
-  res.status(200).json(result);
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = { getAPI };
