@@ -1,10 +1,7 @@
 const express = require("express");
-const apicache = require("apicache");
 const { getAPI } = require("../controllers/api.controller");
 const router = express.Router();
 
-let cache = apicache.middleware;
-
-router.get("/", cache("2 minute"), getAPI);
+router.get("/", getAPI);
 
 module.exports = router;
