@@ -1,34 +1,47 @@
-import React, { useState, setState } from "react";
-import { DateRes, Genres } from "../api/callAPI";
+import React, { useState } from "react";
+import { DayStat, Genre } from "../api/callAPI";
 
-function Selection() {
-	const date = new DateRes();
-	const genres = new Genres();
-	const [object, setObject] = useState({});
-	return (
-		<div className="buttons">
-			<button
-				name="genre"
-				onClick={async (e) => {
-					const apiResult = await genres.getGenres();
-					setObject(apiResult);
-				}}
-			>
-				Genre
-			</button>
-			<button
-				name="day"
-				onClick={async (e) => {
-					const apiResult = await date.getDaateStat();
-					setObject(apiResult);
-				}}
-			>
-				Day
-			</button>
-
-			<div>{object.genres}</div>
-		</div>
-	);
+function Display(obj) {
+  return;
 }
 
-export default Selection;
+function Selection() {
+  const [jsonObject, setJsonObject] = useState({});
+  return (
+    <div className="selections">
+      <button
+        name="genre"
+        onClick={async () => {
+          const req = new Genre("20211101", "20211130");
+          const requestResult = await req.request();
+          console.log(requestResult);
+          setJsonObject(requestResult);
+        }}
+      >
+        Genre
+      </button>
+      <button
+        name="days"
+        onClick={async () => {
+          const req = new DayStat("202107");
+          const requestResult = await req.request();
+          console.log(requestResult);
+          setJsonObject(requestResult);
+        }}
+      >
+        Days
+      </button>
+    </div>
+  );
+}
+
+function Stat() {
+  return (
+    <div className="stat-frame">
+      <div className="stats"></div>
+      <Selection />
+    </div>
+  );
+}
+
+export default Stat;

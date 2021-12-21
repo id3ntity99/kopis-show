@@ -1,0 +1,14 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 2017,
+		"sourceType": "module"
+	},
+
+	"env" : {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+
+	"extends": "react-app"
+}
