@@ -1,5 +1,4 @@
 const axios = require("axios");
-require("dotenv").config();
 
 // Abstract Class -- This class can't be isntantiated.
 class Request {
@@ -18,7 +17,7 @@ class Request {
   }
 }
 
-class Genre extends Request {
+export class Genre extends Request {
   // Contructor is here because Request class can't be instantiated.
   constructor(stDate, edDate) {
     super();
@@ -37,7 +36,7 @@ class Genre extends Request {
   }
 }
 
-class DayStat extends Request {
+export class DayStat extends Request {
   // Contructor is here because Request class can't be instantiated.
   constructor(stDate) {
     super();
@@ -55,7 +54,7 @@ class DayStat extends Request {
   }
 }
 
-class Shows extends Request {
+export class Shows extends Request {
   // Contructor is here because Request class can't be instantiated.
   constructor(stDate, edDate, cPage, rows) {
     super();
@@ -75,4 +74,4 @@ class Shows extends Request {
   }
 }
 
-export { Genre, DayStat, Shows };
+//export default Shows;
