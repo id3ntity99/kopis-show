@@ -64,9 +64,10 @@ export class Shows extends Request {
     this.rows = rows;
   }
   async request() {
-    this.url = `http://localhost:5000/api?stdate=${this.stDate}&eddate=${this.edDate}&cpage=${this.cPage}&rows=${this.rows}`;
+    this.url = `http://localhost:5000/api?stdate=${this.startDate}&eddate=${this.endDate}&cpage=${this.cPage}&rows=${this.rows}`;
     try {
-      return await axios.get(this.url);
+      const result = await axios.get(this.url);
+      return result.data.dbs.db;
     } catch (err) {
       console.log(err);
       return 400;

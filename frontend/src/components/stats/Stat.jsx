@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Plot from "react-plotly.js";
+import Plotly from "react-plotly.js";
 import { Genre } from "../api/callAPI";
-function Stat() {
+import NavBar from "../public/Navbar";
+import "../styles/stat.css";
+
+function Graph() {
   const [pltData, setPltData] = useState(null);
   useEffect(() => {
     // Call API
@@ -10,14 +14,14 @@ function Stat() {
       const plt1 = {
         x: statData.genres,
         y: statData.open_count,
-        names: "Open Counts",
+        name: "OpenCounts",
         type: "bar",
       };
 
       const plt2 = {
         x: statData.genres,
         y: statData.run_count,
-        names: "Run Coutns",
+        name: "Run Coutns",
         type: "bar",
       };
 
@@ -26,8 +30,20 @@ function Stat() {
     }
     fetchAPI();
   }, []);
-  console.log(pltData);
-  return <Plot data={pltData} />;
+  return (
+    <div className="stat-container">
+      <Plot data={pltData} />
+    </div>
+  );
+}
+
+function Stat() {
+  return (
+    <div>
+      <NavBar />
+      <Graph />
+    </div>
+  );
 }
 
 export default Stat;

@@ -1,4 +1,4 @@
-function formatDate(stDate, edDate) {
+async function formatDate(stDate, edDate) {
   // Stringify date.
   let startYear = stDate.getFullYear().toString();
   let startMonth = (stDate.getMonth() + 1).toString();
@@ -14,7 +14,6 @@ function formatDate(stDate, edDate) {
   endYear = endYear >= 10 ? endYear : "0" + endYear;
   endMonth = endMonth >= 10 ? endMonth : "0" + endMonth;
   endDay = endDay >= 10 ? endDay : "0" + endDay;
-
   // Get completely formatted date.
   const startDateResult = startYear + startMonth + startDay;
   const endDateResult = endYear + endMonth + endDay;
