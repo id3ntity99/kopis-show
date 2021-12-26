@@ -12,6 +12,7 @@ function List(props) {
     const poster = show.poster;
     const genre = show.genrenm;
     const state = show.prfstate;
+    console.log(showName);
     return (
       <li className="show-list" key={showId}>
         <div className="show-list__container">

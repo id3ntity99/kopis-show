@@ -42,8 +42,8 @@ export class DayStat extends Request {
     super();
     this.startDate = stDate;
   }
-  async request() {
-    this.url = `http://localhost:8000/api/day?stdate=${this.startDate}`;
+  async request(stDate) {
+    this.url = `http://localhost:8000/api/day?stdate=${stDate}`;
     try {
       const response = await axios.get(this.url);
       return response.data;
@@ -63,8 +63,8 @@ export class Shows extends Request {
     this.cPage = cPage;
     this.rows = rows;
   }
-  async request() {
-    this.url = `http://localhost:5000/api?stdate=${this.startDate}&eddate=${this.endDate}&cpage=${this.cPage}&rows=${this.rows}`;
+  async request(stDate, edDate, cPage, rows) {
+    this.url = `http://localhost:5000/api?stdate=${stDate}&eddate=${edDate}&cpage=${cPage}&rows=${rows}`;
     try {
       const result = await axios.get(this.url);
       return result.data.dbs.db;
