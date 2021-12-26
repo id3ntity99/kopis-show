@@ -7,7 +7,7 @@ import { subDays } from "date-fns";
 import "../styles/Search.css";
 import List from "../shows/List";
 
-export class ShowSearchBox extends Component {
+class SearchBox extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -18,25 +18,12 @@ export class ShowSearchBox extends Component {
     };
     this.caller = props.caller;
   }
-  async #search(e) {
-    e.preventDefault();
-    const { startDateResult, endDateResult } = await formatDate(
-      this.state.startDate,
-      this.state.endDate
-    );
-    console.log(startDateResult, endDateResult);
-    this.setState({ isLoading: true });
-    const searchResult = await this.caller.request(
-      startDateResult,
-      endDateResult,
-      1,
-      5
-    );
-    this.setState({ searchResult });
-    this.setState({ isLoading: false });
+
+  async search(e) {
+    throw new Error("This is abstract method. Implementation required.");
   }
 
-  #renderDatePicker() {
+  renderDatePicker() {
     if (this.props.type === "double") {
       return (
         <div className="date-input">
@@ -76,6 +63,26 @@ export class ShowSearchBox extends Component {
       return <h1>Unkown prop value: {this.props.type}</h1>;
     }
   }
+}
+
+export class ShowSearchBox extends SearchBox {
+  async search(e) {
+    e.preventDefault();
+    const { startDateResult, endDateResult } = await formatDate(
+      this.state.startDate,
+      this.state.endDate
+    );
+    console.log(startDateResult, endDateResult);
+    this.setState({ isLoading: true });
+    const searchResult = await this.caller.request(
+      startDateResult,
+      endDateResult,
+      1,
+      5
+    );
+    this.setState({ searchResult });
+    this.setState({ isLoading: false });
+  }
 
   render() {
     if (this.state.isLoading === true) {
@@ -86,15 +93,54 @@ export class ShowSearchBox extends Component {
           <form
             className="search-form"
             onSubmit={async (e) => {
-              await this.#search(e);
+              await this.search(e);
             }}
           >
             <div className="search">
-              {this.#renderDatePicker()}
+              {this.renderDatePicker()}
               <button className="submit-btn">Search</button>
             </div>
           </form>
           <List shows={this.state.searchResult} />
+        </div>
+      );
+    }
+  }
+}
+
+export class PlotSearchBox extends SearchBox {
+  async search(e) {
+    e.preventDefault();
+    // 수정 요망: formatDate()의 매개변수는 startDate 하나일 수도 있고 startDate, endDate 두개일 수도 있음.
+    const { startDateResult, endDateResult } = await formatDate(
+      this.state.startDate,
+      this.state.endDate
+    );
+    this.setState({ isLoading: true });
+    // 수정 요망: caller.request()의 매개변수도 하나일 수도 있고 두개일 수도 있음.
+    const searchResult = await this.caller.request(
+      startDateResult,
+      endDateResult
+    );
+    this.setState({ searchResult });
+    this.setState({ isLoading: false });
+  }
+
+  render() {
+    if (this.state.isLoading === true) {
+      return <Loading />;
+    } else {
+      return (
+        <div>
+          <form
+            className="search-form"
+            onSubmit={async (e) => await this.search(e)}
+          >
+            <div className="search">
+              {this.renderDatePicker()}
+              <button className="submit-btn">Search</button>
+            </div>
+          </form>
         </div>
       );
     }

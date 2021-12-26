@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ShowResult from "./components/shows/Shows";
 import Home from "./components/home/Home";
-import Stat from "./components/stats/Stat";
+import GenreStat from "./components/stats/Stat";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shows" element={<ShowResult />} />
-        <Route path="/stats" element={<Stat />} />
+        <Route path="/stats/genre" element={<GenreStat />} />
         <Route
           path="*"
           element={
