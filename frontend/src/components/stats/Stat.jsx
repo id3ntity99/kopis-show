@@ -1,20 +1,19 @@
-import React, { Component, useState, useEffect } from "react";
-import Plot from "react-plotly.js";
+import React, { Component } from "react";
 import NavBar from "../public/Navbar";
 import "../styles/stat.css";
-import { DayStat, Genre } from "../api/callAPI";
-import { PlotSearchBox } from "../public/Search";
+import { DayStat } from "../api/callAPI";
+import { DayStatSearchBox } from "../public/Search";
 
 class GenreStat extends Component {
   constructor() {
     super();
-    this.caller = new Genre();
+    this.caller = new DayStat();
   }
   render() {
     return (
       <div>
         <NavBar />
-        <PlotSearchBox type="double" caller={this.caller} />
+        <DayStatSearchBox type="single" format="yyyymm" caller={this.caller} />
       </div>
     );
   }

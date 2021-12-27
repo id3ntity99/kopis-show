@@ -1,31 +1,7 @@
 const axios = require("axios");
-
-// Abstract Class -- This class can't be isntantiated.
-class Request {
-  constructor() {
-    // Initiate attributes
-    this.startDate = null;
-    this.endDate = null;
-    this.cPage = null;
-    this.rows = null;
-  }
-
-  // Abstract Method
-  request() {
-    // Throw error if user attempt to instantiate.
-    throw new Error("This is an abstract method. Implementaion required.");
-  }
-}
-
-export class Genre extends Request {
-  // Contructor is here because Request class can't be instantiated.
-  constructor(stDate, edDate) {
-    super();
-    this.startDate = stDate;
-    this.endDate = edDate;
-  }
-  async request() {
-    this.url = `http://localhost:8000/api/genre?stdate=${this.startDate}&eddate=${this.endDate}`;
+export class Genre {
+  async request(stDate, edDate) {
+    this.url = `http://localhost:8000/api/genre?stdate=${stDate}&eddate=${edDate}`;
     try {
       const response = await axios.get(this.url);
       return response.data;
@@ -36,12 +12,7 @@ export class Genre extends Request {
   }
 }
 
-export class DayStat extends Request {
-  // Contructor is here because Request class can't be instantiated.
-  constructor(stDate) {
-    super();
-    this.startDate = stDate;
-  }
+export class DayStat {
   async request(stDate) {
     this.url = `http://localhost:8000/api/day?stdate=${stDate}`;
     try {
@@ -54,15 +25,7 @@ export class DayStat extends Request {
   }
 }
 
-export class Shows extends Request {
-  // Contructor is here because Request class can't be instantiated.
-  constructor(stDate, edDate, cPage, rows) {
-    super();
-    this.startDate = stDate;
-    this.endDate = edDate;
-    this.cPage = cPage;
-    this.rows = rows;
-  }
+export class Shows {
   async request(stDate, edDate, cPage, rows) {
     this.url = `http://localhost:5000/api?stdate=${stDate}&eddate=${edDate}&cpage=${cPage}&rows=${rows}`;
     try {
@@ -74,5 +37,3 @@ export class Shows extends Request {
     }
   }
 }
-
-//export default Shows;

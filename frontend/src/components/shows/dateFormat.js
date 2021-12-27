@@ -1,4 +1,4 @@
-async function formatDate(stDate, edDate) {
+async function formatDate(stDate, edDate = null) {
   // Stringify date.
   let startYear = stDate.getFullYear().toString();
   let startMonth = (stDate.getMonth() + 1).toString();
