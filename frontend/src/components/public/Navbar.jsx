@@ -5,11 +5,17 @@ function Navbar() {
   return (
     <React.Fragment>
       <nav className="nav-bar">
-        <h1>LOGO</h1>
+        <h1 className="logo">LOGO</h1>
         <ul className="nav-list">
-          <li>Home</li>
-          <li>Shows</li>
-          <li>Stat</li>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/shows">Shows</a>
+          </li>
+          <li>
+            <a href="/stats">Stat</a>
+          </li>
         </ul>
       </nav>
     </React.Fragment>

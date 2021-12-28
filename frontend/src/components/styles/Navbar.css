@@ -1,19 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&family=Roboto+Mono:wght@200&display=swap");
+
 .nav-bar {
-	width: 1920px;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  width: 1920px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .nav-list {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	list-style: none;
-	width: 500px;
-	font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  width: 500px;
+  font-size: 30px;
 }
 
+.nav-list li a {
+  text-decoration: none;
+  color: #ececec;
+}
 
-
-
+.logo {
+  color: #ececec;
+}

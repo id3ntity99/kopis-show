@@ -11,8 +11,6 @@ class SearchBox extends Component {
   constructor(props) {
     super();
     this.state = {
-      startUTC: new Date(),
-      endUTC: new Date(),
       startDate: new Date(),
       endDate: new Date(),
       searchResult: [],
@@ -115,7 +113,7 @@ export class DayStatSearchBox extends SearchBox {
           <Loading />
         </div>
       );
-    } else {
+    } else if (this.state.isLoading === false && this.state.searchResult != 0) {
       return (
         <div>
           <form
@@ -142,6 +140,31 @@ export class DayStatSearchBox extends SearchBox {
             legend="Open Count"
           />
           {/*Plot-painting component here. */}
+        </div>
+      );
+    } else if (this.state.isLoading === false && this.state.searchResult == 0) {
+      return (
+        <div>
+          <div>
+            <form
+              className="search-form"
+              onSubmit={async (e) => await this.search(e)}
+            >
+              <div className="search">
+                <div className="date-input">
+                  <DatePicker
+                    selected={this.state.startDate}
+                    showMonthYearPicker
+                    onChange={(date) => {
+                      this.setState({ startDate: date });
+                    }}
+                    dateFormat="yyyy-MM"
+                  />
+                </div>
+                <button className="submit-btn">Search</button>
+              </div>
+            </form>
+          </div>
         </div>
       );
     }

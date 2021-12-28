@@ -1,0 +1,34 @@
+.home {
+}
+
+.greeting {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #ececec;
+  position: absolute;
+  top: 30%;
+}
+
+.greeting div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  padding: 50px 50px;
+  border: 2px solid white;
+  border-radius: 30px;
+}
+
+.source-info {
+  display: flex;
+  align-items: center;
+  color: #ececec;
+}
+
+.source-info a {
+  text-decoration: none;
+  color: #ececec;
+}

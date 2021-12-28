@@ -1,9 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&family=Nanum+Gothic&display=swap");
-
-* {
-  font-family: "IBM Plex Sans KR", sans-serif;
-}
-
 .search {
   display: flex;
   flex-direction: column;
@@ -12,7 +6,7 @@
 }
 
 .search-form {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ececec;
   width: 100%;
   height: 400px;
   display: flex;
